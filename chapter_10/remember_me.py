@@ -1,8 +1,10 @@
+from pathlib import Path
+
 import json
 
 def get_stored_username():
     """Get stored username if available."""
-    filename = 'username.json'
+    filename = Path(__file__).parent / 'username.json'
     try:
         with open(filename) as f:
             username = json.load(f)
@@ -14,7 +16,7 @@ def get_stored_username():
 def get_new_username():
     """Prompt for a new username."""
     username = input("What is your name? ")
-    filename = 'username.json'
+    filename = Path(__file__).parent / 'username.json'
     with open(filename, 'w') as f:
         json.dump(username, f)
     return username
