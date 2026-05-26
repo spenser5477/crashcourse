@@ -3,7 +3,10 @@ from datetime import datetime
 
 from matplotlib import pyplot as plt
 
-filename = 'data/death_valley_2018_simple.csv'
+from pathlib import Path
+
+filename = Path(__file__).parent / 'data/death_valley_2018_simple.csv'
+
 with open(filename) as f:
     reader = csv.reader(f)
     header_row = next(reader)
@@ -23,7 +26,7 @@ with open(filename) as f:
             lows.append(low)
 
 # Plot the high and low temperatures.
-plt.style.use('seaborn')
+plt.style.use('seaborn-v0_8')
 fig, ax = plt.subplots()
 ax.plot(dates, highs, c='red', alpha=0.5)
 ax.plot(dates, lows, c='blue', alpha=0.5)

@@ -3,7 +3,10 @@ from datetime import datetime
 
 from matplotlib import pyplot as plt
 
-filename = 'data/sitka_weather_2018_simple.csv'
+from pathlib import Path
+
+filename = Path(__file__).parent / 'data/sitka_weather_2018_simple.csv'
+
 with open(filename) as f:
     reader = csv.reader(f)
     header_row = next(reader)
@@ -17,7 +20,7 @@ with open(filename) as f:
         highs.append(high)
 
 # Plot the high temperatures.
-plt.style.use('seaborn')
+plt.style.use('seaborn-v0_8')
 fig, ax = plt.subplots()
 ax.plot(dates, highs, c='red')
 
